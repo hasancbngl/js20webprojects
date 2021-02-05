@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Satisfy', sans-serif;
+    background: whitesmoke;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 40px;
+    font-weight: 250;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.loader img {
+    position: fixed;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.image-container {
+    margin: 10px 30%;
+}
+
+.image-container img {
+    width: 100%;
+    margin-top: 7px;
+}
+
+/*Media Query for smart phones*/
+@media screen and (max-width:600px){
+    h1 {
+        font-size: 17.5px;
+        letter-spacing: 3.8px;
+    }
+
+    .image-container {
+        margin: 10px;
+    }
+}
