@@ -11,11 +11,24 @@
 <body>
     <div class="player-container">
         <div class="img-container">
-            <img src="img/em-1.jpeg" alt="Gnat">
+            <img src="img/music-1.jpeg" alt="Gnat">
         </div>
         <h2 id="title">Gnat</h2>
         <h3 id="artist">Eminem</h3>
-        <audio src="music/em-1.mp3" controls></audio>
+        <audio src="music/music-1.mp3"></audio>
+        <div class="progress-container" id="progress-container">
+            <div class="progress" id="progress"></div>
+            <div class="duration-wrapper">
+                <span id="current-time">0:00</span>
+                <span id="duration">3:56</span>
+            </div>
+        </div>
+        <!--Controls-->
+        <div class="player-controls">
+            <i class="fas fa-backward" id="prev" title="Previous"></i>
+            <i class="fas fa-play main-button" id="play" title="Play"></i>
+            <i class="fas fa-forward" id="next" title="Next"></i>
+        </div>
     </div>
     <!-- Script -->
     <script src="script.js"></script>
