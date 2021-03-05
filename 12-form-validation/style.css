@@ -19,8 +19,77 @@ body {
 .container {
     width: 500px;
     height: 630px;
-    background: rgb(207, 150, 176);
+    background: rgb(231, 180, 203);
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px;
+    box-shadow: 10px 20px 0 10px rgba(0, 0, 0, 0.4);
+}
+
+/*Form*/
+form {
+    width: 90%;
+}
+
+.form-group {
+    height: 65px;
+}
+
+label {
+    position: relative;
+    bottom: 3px;
+}
+
+input {
+    width: 100%;
+    height: 35px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.3s;
+}
+
+input:valid {
+    border: 1px solid blue;
+}
+
+input:invalid {
+    border: 1px solid red;
+}
+
+button {
+    cursor: pointer;
+    color: white;
+    background-color:rgb(170, 9, 120);
+    border: none;
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: 'Righteous', sans-serif;
+    letter-spacing: 2px;
+    outline: none;
+    margin-top: 5px;
+}
+
+button:hover {
+    filter: brightness(110%);
+    transform: translateY(5%);
+}
+
+button:focus {
+    outline: none;
+}
+
+.message-container {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 90%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    color: black;
 }

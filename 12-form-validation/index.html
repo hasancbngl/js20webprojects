@@ -13,27 +13,28 @@
         <form id="form">
             <div class="form-group">
                 <label for="name">Full Name</label>
-                <input type="text" id="name" placeholder="Full Name">
+                <input type="text" id="name" placeholder="Full Name" required minlength="3" maxlength="100">
             </div>
             <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" placeholder="500-005-4444">
+                <input type="tel" id="phone" placeholder="500-005-4444" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
             </div>
             <div class="form-group">
                 <label for="email">Email adress</label>
-                <input type="email" id="email" placeholder="email@adress.com">
+                <input type="email" id="email" placeholder="email@adress.com" required>
             </div>
             <div class="form-group">
                 <label for="url">Website URL</label>
-                <input type="url" id="url" placeholder="https://hasancobanoglu.dev">
+                <input type="url" id="url" placeholder="https://hasancobanoglu.dev" required>
             </div>
             <div class="form-group">
                 <label for="password1">Password</label>
-                <input type="password" id="password1" placeholder="Create Password">
+                <input type="password" id="password1" placeholder="Create Password (min:8 characters)" required
+                 pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" title="Please include at least 1 uppercase and 1 number">
             </div>
             <div class="form-group">
                 <label for="password2">Confirm Password</label>
-                <input type="password" id="password2" placeholder="Confirm Password">
+                <input type="password" id="password2" placeholder="Confirm Password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$">
             </div>
             <button type="submit">Register</button>
         </form>
