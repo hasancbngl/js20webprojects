@@ -200,3 +200,5 @@ function updateParticles() {
 		}
 	}
 }
+
+export {startConfetti, stopConfetti, removeConfetti};

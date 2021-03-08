@@ -1,3 +1,5 @@
+import {startConfetti, removeConfetti, stopConfetti} from './confetti.js';
+
 const playerScoreEl = document.getElementById('playerScore');
 const computerScoreEl = document.getElementById('computerScore');
 const playerChoiceEl = document.getElementById('playerChoice');
@@ -38,6 +40,7 @@ const resetAll = () => {
   computerChoiceEl.textContent = '';
   resetSelected();
 };
+window.resetAll = resetAll;
 
 const randomComputerChoice = () => {
   let computerChoiceNumber = Math.floor(Math.random() *5);
@@ -88,5 +91,6 @@ const select = playerChoice => {
     }
   });
 };
+window.select = select;
 
 resetAll();
