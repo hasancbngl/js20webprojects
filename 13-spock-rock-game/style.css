@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
 html {
   box-sizing: border-box;
@@ -7,18 +7,26 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-
-  font-family: Lato, sans-serif;
+  background: whitesmoke;
+  font-family: 'Patrick Hand', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-
+.game-container {
+  width: 530px;
+  height: 600px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px -5 rgba(0, 0, 0, 0.5);
+}
 
 .header {
-  background: dodgerblue;
-
+  background: green;
+  height: 100px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +51,25 @@ h2 {
   User-select: none;
 }
 
+#player .far,
+#player .choice {
+  color: green;
+  cursor: pointer;
+}
 
+#computer .far,
+#computer .choice {
+  color: rgb(214, 22, 9);
+}
+
+.selected {
+  color: black !important;
+}
+
+#player .far:last-of-type,
+#computer .far:last-of-type {
+  margin-right: 0;
+}
 
 .reset-icon {
   font-size: 30px;
@@ -91,6 +117,7 @@ h2 {
 /* Media Query: iPhone (Vertical) */
 @media screen and (max-width: 376px) {
   .game-container {
+    width: 95%;
     height: 550px;
   }
 
