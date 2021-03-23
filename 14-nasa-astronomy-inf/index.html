@@ -6,9 +6,46 @@
     <title>NASA API Pictures</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="https://s2.googleusercontent.com/s2/favicons?domain=www.nasa.gov">
-    
+
 </head>
 <body>
+    <div class="loader hidden">
+        <img src="/14-nasa-astronomy-inf/rocket.svg" alt="animation">
+    </div>
+    <div class="container">
+        <div class="navigation-container">
+            <span class="background"></span>
+            <span class="navigation-items" id="resultsNav">
+                <h3 class="clickable">Favorites</h3>
+                <h3>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</h3>
+                <h3 class="clickable">Load More</h3>
+            </span>
+            <span class="navigation-items hidden" id="favoritesNav">
+                <h3 class="clickable">Load More NASA Images</h3>
+            </span>
+        </div>
+        <!--Images container-->
+        <div class="images-container">
+            <div class="card">
+                <a href="" target="_blank" title="View Full Image">
+                    <img src="https://apod.nasa.gov/apod/image/2103/MarsDuddo_Kivlehan_960.jpg" alt="NASA Picture Of The Day" class="card-img-top">
+                </a>
+                <div class="card-title">
+                    <h5 class="card-title">Title Of Image</h5>
+                    <p class="clickable">Add To Favorites</p>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quam aliquam dicta, ratione voluptatum facere quo quis doloremque enim sapiente inventore dolor totam tenetur numquam nisi obcaecati porro excepturi quaerat! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet aut, aperiam, repellat sed voluptas repudiandae, explicabo aliquid recusandae animi libero veritatis placeat. Vitae similique voluptates ut et aliquid, eligendi ex.
+                    </p>
+                    <small class="text-muted">
+                        <strong>12-12-2121</strong>
+                        <span>Copyright Info</span>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="save-confirmed hidden">
+        <h1>ADDED!</h1>
+    </div>
     <!-- Script -->
     <script src="script.js"></script>
 </body>
