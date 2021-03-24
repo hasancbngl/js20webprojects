@@ -13,7 +13,7 @@
             <h1>Math Sprint Game</h1>
         </div>
         <!--Splash page-->
-        <div class="card" id="splash-page" hidden>
+        <div class="card" id="splash-page">
             <form id="start-form">
                 <div class="selection-container">
                     <!--10 questions radio input-->
@@ -60,8 +60,32 @@
             </form>
         </div>
         <!--Countdown Page-->
-        <div class="card" id="countdown-page">
+        <div class="card" id="countdown-page" hidden>
             <h1 class="countdown">3</h1>
+        </div>
+        <!--Game Page-->
+        <div class="card" id="game-page" hidden>
+            <!--Item Container-->
+            <div class="item-container"></div>
+            <!--Right/Wrong Buttons-->
+            <div class="item-footer">
+                <button class="wrong">Wrong</button>
+                <button class="right">Right</button>
+            </div>
+        </div>
+        <!--Score page-->
+        <div class="card" id="score-page" hidden>
+            <!--Score container-->
+            <div class="score-container">
+                <h1 class="title">Your Time</h1>
+                <h1 class="final-time">4.5s</h1>
+                <h1 class="base-time">Base Time: 3.2s</h1>
+                <h1 class="penalty-time">Penalty: 1.3s</h1>
+            </div>
+            <!--Play Again-->
+            <div class="score-footer">
+                <button class="play-again">Play Again</button>
+            </div>
         </div>
     </div>
     <!-- Script -->
