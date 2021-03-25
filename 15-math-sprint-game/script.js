@@ -80,7 +80,7 @@ const updateBestScore = () => {
 const playAgain=() => {
   gamePage.addEventListener('click', startTimer);
   scorePage.hidden = true;
-  gamePage.hidden = false;
+  splashPage.hidden = false;
   equationsArray = [];
   equationObject = {};
   playerGuessAr = [];
@@ -116,15 +116,12 @@ const checkTime = () => {
     clearInterval(timer);
     //check the wrong guesses, add penalty time
     equationsArray.forEach((equationEl, index) => {
-      if(equationEl.evaluated===playerGuessAr[index]) {
+      if(!equationEl.evaluated===playerGuessAr[index]) {
         //correct guess no pnealty
-        
-      } else {
-        penaltyTime+=0.5;
+        penaltyTime+=0.5; 
       }
     });
     finalTime = timePlayed + penaltyTime;
-    console.log('time:', timePlayed, 'penalty', penaltyTime, 'final', finalTime);
     scoresToDom();
   }
 };
@@ -227,25 +224,24 @@ const equationsToDom = () => {
 }
 
 const startCountdown = () => {
-  countdown.textContent = '3';
-  setTimeout(()=> {
-    countdown.textContent = '2';
-  }, 1000);
-  setTimeout(()=> {
-    countdown.textContent = '1';
-  }, 2000);
-  setTimeout(()=> {
-    countdown.textContent = 'GO!';
-  }, 3000);
+  let count = 4;
+  const countdownTimer = setInterval(()=> {
+    count--;
+    if(count===0) countdown.textContent = 'GO!';
+    else if(count===-1){
+      displayGamePage();
+      clearInterval(countdownTimer);
+    } else countdown.textContent = count;
+  },1000);
+
 };
 
 //show countdown
 function showCountdown() {
   countdownPage.hidden = false;
   splashPage.hidden = true;
-  startCountdown();
   populateGamePage();
-  setTimeout(displayGamePage, 400);
+  startCountdown();
 }
 
 //get the value from selected radio button
