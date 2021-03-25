@@ -14,7 +14,7 @@
         </div>
         <!--Splash page-->
         <div class="card" id="splash-page">
-            <form id="start-form">
+            <form id="start-form" onsubmit="selectQuestionAmount(event)">
                 <div class="selection-container">
                     <!--10 questions radio input-->
                     <div class="radio-container">
@@ -22,7 +22,7 @@
                         <input type="radio" name="questions" id="value-10" value="10">
                         <span class="best-score">
                             <span>Best Score</span>
-                            <span class="best-score-value">0.0s</span>
+                            <span class="best-score-value"></span>
                         </span>
                     </div>
                     <!--25 Questions radio input-->
@@ -31,7 +31,7 @@
                         <input type="radio" name="questions" id="value-25" value="25">
                         <span class="best-score">
                             <span>Best Score</span>
-                            <span class="best-score-value">0.0s</span>
+                            <span class="best-score-value"></span>
                         </span>
                     </div>
                     <!--50 Questions radio input-->
@@ -40,7 +40,7 @@
                         <input type="radio" name="questions" id="value-50" value="50">
                         <span class="best-score">
                             <span>Best Score</span>
-                            <span class="best-score-value">0.0s</span>
+                            <span class="best-score-value"></span>
                         </span>
                     </div>
                     <!--100 Questions radio input-->
@@ -49,7 +49,7 @@
                         <input type="radio" name="questions" id="value-100" value="100">
                         <span class="best-score">
                             <span>Best Score</span>
-                            <span class="best-score-value">0.0s</span>
+                            <span class="best-score-value"></span>
                         </span>
                     </div>
                 </div>
@@ -69,8 +69,8 @@
             <div class="item-container"></div>
             <!--Right/Wrong Buttons-->
             <div class="item-footer">
-                <button class="wrong">Wrong</button>
-                <button class="right">Right</button>
+                <button class="wrong" onclick="select(false)">Wrong</button>
+                <button class="right" onclick="select(true)">Right</button>
             </div>
         </div>
         <!--Score page-->
@@ -78,17 +78,18 @@
             <!--Score container-->
             <div class="score-container">
                 <h1 class="title">Your Time</h1>
-                <h1 class="final-time">4.5s</h1>
-                <h1 class="base-time">Base Time: 3.2s</h1>
-                <h1 class="penalty-time">Penalty: 1.3s</h1>
+                <h1 class="final-time"></h1>
+                <h1 class="base-time"></h1>
+                <h1 class="penalty-time"></h1>
             </div>
             <!--Play Again-->
             <div class="score-footer">
-                <button class="play-again">Play Again</button>
+                <button class="play-again" hidden>Play Again</button>
             </div>
         </div>
     </div>
     <!-- Script -->
+    <script src="shuffle.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
