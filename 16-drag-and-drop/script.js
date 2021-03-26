@@ -22,7 +22,8 @@ let columnLists = [backlogList, progressList, completeList, onHoldList];
 
 
 // Drag Functionality
-
+let draggedItem;
+let currentColumn;
 
 // Get Arrays from localStorage if available, set default values if not
 function getSavedColumns() {
@@ -54,6 +55,9 @@ function createItemEl(columnEl, column, item, index) {
   const listEl = document.createElement('li');
   listEl.classList.add('drag-item');
   listEl.textContent = item;
+  listEl.draggable = true;
+  listEl.setAttribute('ondragstart', 'drag(event)');
+  listEl.contentEditable = true;
   columnEl.appendChild(listEl);
 }
 
@@ -81,7 +85,81 @@ function updateDOM() {
   onHoldListArray.forEach((onHoldItem, index) => {
     createItemEl(columnLists[3], 3, onHoldItem, index);
   });
-
+  updatedOnLoad = true;
+  updateSavedColumns();
 }
+
+const addItemToColumn = column => {
+  const text = addItems[column].textContent;
+  const selectedArray = listArrays[column];
+  selectedArray.push(text);
+  addItems[column].textContent = '';
+  updateDOM();
+};
+
+//show add Item input box
+const showInputBox= column => {
+  addBtns[column].style.visibility = 'hidden';
+  saveItemBtns[column].style.display = 'flex';
+  addItemContainers[column].style.display = 'flex';
+}
+
+//hide add Item input box
+const hideInputBox= column => {
+  addBtns[column].style.visibility = 'visible';
+  saveItemBtns[column].style.display = 'none';
+  addItemContainers[column].style.display = 'none';
+  addItemToColumn(column);
+}
+
+//allows arrays to reflect when drag and drop 
+const rebuildArrays = () => {
+  backlogListArray =[];
+  for(let i=0; i<backlogList.children.length; i++) {
+    backlogListArray.push(backlogList.children[i].textContent);
+  }
+  progressListArray =[];
+  for(let i=0; i<progressList.children.length; i++) {
+    progressListArray.push(progressList.children[i].textContent);
+  }
+  completeListArray =[];
+  for(let i=0; i<completeList.children.length; i++) {
+    completeListArray.push(completeList.children[i].textContent);
+  }
+  onHoldListArray =[];
+  for(let i=0; i<onHoldList.children.length; i++) {
+    onHoldListArray.push(onHoldList.children[i].textContent);
+  }
+  updateDOM();
+};
+
+//when Items start dragging
+const drag = e => {
+  draggedItem = e.target;
+};
+
+//when Item enters in a column area
+const dragEnter = (column) => {
+  itemLists[column].classList.add('over');
+  currentColumn = column;
+};
+
+
+//column allows for item to drop
+const allowDrop=(e) => {
+  e.preventDefault();
+};
+
+//dropping Item in Column
+const drop=(e) => {
+  e.preventDefault();
+  //remove background color and padding
+  itemLists.forEach(column => {
+    column.classList.remove('over');
+  });
+  //add item to column
+  itemLists[currentColumn].appendChild(draggedItem);
+  rebuildArrays();
+};
 
 updateDOM();
