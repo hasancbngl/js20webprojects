@@ -8,7 +8,6 @@ const backlogList = document.getElementById('backlog-list');
 const progressList = document.getElementById('progress-list');
 const completeList = document.getElementById('complete-list');
 const onHoldList = document.getElementById('on-hold-list');
-
 // Items
 let updatedOnLoad = false;
 
@@ -20,9 +19,9 @@ let onHoldListArray = [];
 let listArrays = [];
 let columnLists = [backlogList, progressList, completeList, onHoldList];
 
-
 // Drag Functionality
 let draggedItem;
+let dragging = false;
 let currentColumn;
 
 // Get Arrays from localStorage if available, set default values if not
@@ -49,6 +48,11 @@ function updateSavedColumns() {
   });
 }
 
+//remove emty items
+const filterArray = array => {
+ return array.filter(item => item !== null);
+};
+
 // Create DOM Elements for each list item
 function createItemEl(columnEl, column, item, index) {
   // List Item
@@ -57,7 +61,9 @@ function createItemEl(columnEl, column, item, index) {
   listEl.textContent = item;
   listEl.draggable = true;
   listEl.setAttribute('ondragstart', 'drag(event)');
+  listEl.id = index;
   listEl.contentEditable = true;
+  listEl.setAttribute('onfocusout', `updateItem(${index},${column})`);
   columnEl.appendChild(listEl);
 }
 
@@ -68,26 +74,43 @@ function updateDOM() {
   columnLists.forEach((listItem) => {
     listItem.textContent = '';
   });
-
   // Backlog Column
   backlogListArray.forEach((backlogItem, index) => {
     createItemEl(columnLists[0], 0, backlogItem, index);
   });
+  backlogListArray = filterArray(backlogListArray);
   // Progress Column
   progressListArray.forEach((progressItem, index) => {
     createItemEl(columnLists[1], 1, progressItem, index);
   });
+  progressListArray = filterArray(progressListArray);
   // Complete Column
   completeListArray.forEach((completeItem, index) => {
     createItemEl(columnLists[2], 2, completeItem, index);
   });
+  completeListArray = filterArray(completeListArray);
   // On Hold Column
   onHoldListArray.forEach((onHoldItem, index) => {
     createItemEl(columnLists[3], 3, onHoldItem, index);
   });
+  onHoldListArray = filterArray(onHoldListArray);
   updatedOnLoad = true;
   updateSavedColumns();
 }
+
+//update item or delete if it's blank
+const updateItem = (id, column) => {
+  const selectedArray = listArrays[column];
+  const selectedColumnEl = itemLists[column].children;
+  if(!dragging) {
+    if(!selectedColumnEl[id].textContent) {
+      delete selectedArray[id];
+    } else {
+      selectedArray[id] = selectedColumnEl[id].textContent;
+    }
+    updateDOM();
+  }
+};
 
 const addItemToColumn = column => {
   const text = addItems[column].textContent;
@@ -114,28 +137,17 @@ const hideInputBox= column => {
 
 //allows arrays to reflect when drag and drop 
 const rebuildArrays = () => {
-  backlogListArray =[];
-  for(let i=0; i<backlogList.children.length; i++) {
-    backlogListArray.push(backlogList.children[i].textContent);
-  }
-  progressListArray =[];
-  for(let i=0; i<progressList.children.length; i++) {
-    progressListArray.push(progressList.children[i].textContent);
-  }
-  completeListArray =[];
-  for(let i=0; i<completeList.children.length; i++) {
-    completeListArray.push(completeList.children[i].textContent);
-  }
-  onHoldListArray =[];
-  for(let i=0; i<onHoldList.children.length; i++) {
-    onHoldListArray.push(onHoldList.children[i].textContent);
-  }
+  backlogListArray = Array.from(backlogList.children).map(el => el.textContent);
+  progressListArray = Array.from(progressList.children).map(el => el.textContent);
+  completeListArray = Array.from(completeList.children).map(el => el.textContent);
+  onHoldListArray = Array.from(onHoldList.children).map(el => el.textContent);
   updateDOM();
 };
 
 //when Items start dragging
 const drag = e => {
   draggedItem = e.target;
+  dragging = true;
 };
 
 //when Item enters in a column area
@@ -144,7 +156,6 @@ const dragEnter = (column) => {
   currentColumn = column;
 };
 
-
 //column allows for item to drop
 const allowDrop=(e) => {
   e.preventDefault();
@@ -152,6 +163,7 @@ const allowDrop=(e) => {
 
 //dropping Item in Column
 const drop=(e) => {
+  draggedItem.contentEditable = true;
   e.preventDefault();
   //remove background color and padding
   itemLists.forEach(column => {
@@ -159,6 +171,7 @@ const drop=(e) => {
   });
   //add item to column
   itemLists[currentColumn].appendChild(draggedItem);
+  dragging = false;
   rebuildArrays();
 };
 
