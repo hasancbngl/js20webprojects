@@ -11,9 +11,9 @@ function storeItem(color) {
 }
 
 function imageMode(color) {
-    image1.src = `https://github.com/hasancbngl/js20webprojects/tree/master/5-light-dark-mode/img/undraw_proud_coder_${color}.svg`;
-    image2.src = `https://github.com/hasancbngl/js20webprojects/tree/master/5-light-dark-mode/img/undraw_feeling_proud_${color}.svg`;
-    image3.src = `https://github.com/hasancbngl/js20webprojects/tree/master/5-light-dark-mode/img/undraw_conceptual_idea_${color}.svg`;
+    image1.src = `https://github.com/hasancbngl/js20webprojects/blob/master/5-light-dark-mode/img/undraw_proud_coder_${color}.svg`;
+    image2.src = `https://github.com/hasancbngl/js20webprojects/blob/master/5-light-dark-mode/img/undraw_feeling_proud_${color}.svg`;
+    image3.src = `https://github.com/hasancbngl/js20webprojects/blob/master/5-light-dark-mode/img/undraw_conceptual_idea_${color}.svg`;
 }
 
 function darkMode() {
