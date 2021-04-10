@@ -57,7 +57,7 @@ body {
   left: 5px;
 }
 
-.active-tool > span {
+.active-tool>span {
   background-color: rgb(82, 82, 82);
   border-radius: 5px;
   padding: 2.5px 16px;
@@ -81,7 +81,7 @@ body {
   width: 345px;
 }
 
-.brush > * {
+.brush>* {
   margin-left: 10px;
 }
 
@@ -146,7 +146,6 @@ body {
 
 /* Canvas */
 canvas#canvas {
-  background-color: rgb(177, 177, 177);
   position: absolute;
   top: 50px;
   cursor: crosshair;

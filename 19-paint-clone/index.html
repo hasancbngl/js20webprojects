@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paint Clone</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Tool Bar -->
     <div class="top-bar">
@@ -18,13 +20,14 @@
         <!-- Brush -->
         <div class="brush tool">
             <i class="fas fa-brush" id="brush" title="Brush"></i>
-            <input type="color">
+            <input class="jscolor" value="db4545" id="brush-color">
             <span class="size" id="brush-size" title="Brush Size">10</span>
             <input type="range" min="1" max="50" value="10" class="slider" id="brush-slider">
         </div>
         <!-- Bucket -->
         <div class="bucket tool">
             <i class="fas fa-fill-drip" title="Background Color"></i>
+            <input class="jscolor" value="fff" id="bucket-color">
             <input type="color">
         </div>
         <!-- Eraser -->
@@ -54,8 +57,13 @@
             </a>
         </div>
     </div>
+    <div class="mobile-message">
+        <h2>Please Use The App On Larger Screen.</h2>
+    </div>
 
     <!-- Script -->
+    <script src="jscolor.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
