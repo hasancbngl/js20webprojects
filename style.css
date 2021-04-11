@@ -7,28 +7,37 @@ body{
     font-size: 1.5rem;
 }
 
+.main-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2vh;
+}
+
+.container {
+    width: 40vw;
+}
+
 h1 {
     text-align: center;
     color: rgb(3, 60, 126);
+    font-size: 2rem;
 }
 
 ol {
     position: relative;
-    width: 500px;
-    margin: 100px auto;
     padding: 10px ;
-    box-sizing: border-box;
 }
 
 ol li {
-    display:flex;
     background: rgba(255, 255, 255, 0.2);
-    padding: 10px 20px;
+    list-style-type: none;
+    padding: 0.6rem 1.25rem;
     color: #fff;
-    height: 30px;
+    height: 1.87rem;
     margin: 5px 5px;
     transition: .5s;
     border-radius: 5px;
+    text-align: center;
 }
 
 ol li:hover {
@@ -48,4 +57,19 @@ a:visited {
 a:hover,
 a:active {
     text-decoration: underline;
+}
+
+
+@media screen and (max-width: 700px) {
+    body{
+        font-size: 1.1rem;
+    }
+
+    .main-container {
+        margin-top: -2vh;
+    }
+
+    .container {
+        width: 45vw;
+    }
 }
